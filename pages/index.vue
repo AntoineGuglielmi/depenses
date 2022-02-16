@@ -1,9 +1,17 @@
 <template>
-  <Tutorial/>
+  <div>
+    <Atoms-h1
+      :titre="titreDeLaPage"
+    />
+  </div>
 </template>
 
 <script>
 export default {
-  name: 'IndexPage'
+  data() {
+    return {
+      titreDeLaPage: 'Titre'
+    }
+  }
 }
 </script>
