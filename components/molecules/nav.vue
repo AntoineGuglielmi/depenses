@@ -22,6 +22,10 @@ export default {
                 {
                     link: '/',
                     icon: 'home'
+                },
+                {
+                    link: '/budgets',
+                    icon: 'account_balance_wallet'
                 }
             ]
         }
@@ -43,6 +47,6 @@ export default {
 
         #nav__links
             display: flex
-            gap: 1rem
+            gap: 1.5rem
             justify-content: center
 </style>
