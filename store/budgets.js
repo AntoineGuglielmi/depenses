@@ -10,21 +10,19 @@ export const getters = {
 
 export const mutations = {
     setBudgets(state, payload){
-        // const budgets = this.$axios.$get('http://localhost:8081/budgets').then(r => {
-        //     state.budgets = r.data;
-        // });
         state.budgets = payload.budgets;
     }
 }
 
 export const actions = {
-    async initBudgets({ commit }){
+    async initBudgets({ commit}){
         const budgets = await this.$axios.$get('/api/budgets');
         commit('setBudgets',{budgets});
     },
-    async addBudget({ commit}, payload)
+    async addBudget({ commit, dispatch }, payload)
     {
-        console.log(await this.$axios.$post('/api/add-budget',payload));
-        // console.log(payload);
+        const newBudget = this.$misc.makeData(payload);
+        await this.$axios.$post('/api/add-budget',newBudget);
+        dispatch('initBudgets');
     }
 }
