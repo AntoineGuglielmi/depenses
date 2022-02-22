@@ -24,9 +24,7 @@ export const actions = {
     },
     async addBudget({ commit}, payload)
     {
-        const data =  new FormData();
-        data.append('foo','bar');
-        console.log(await this.$axios.$post('/api/add-budget',data));
+        console.log(await this.$axios.$post('/api/add-budget',payload));
         // console.log(payload);
     }
 }

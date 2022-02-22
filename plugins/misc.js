@@ -4,13 +4,12 @@ export default ({ app, store }, inject) => {
 
         makeData(object)
         {
-            console.log('hello');
-            // const data = new FormData();
-            // for(const [k,v] of Object.entries(object))
-            // {
-            //     data.append(k,v);
-            // }
-            // return data;
+            const data = new FormData();
+            for(const [k,v] of Object.entries(object))
+            {
+                data.append(k,v);
+            }
+            return data;
         }
 
     };

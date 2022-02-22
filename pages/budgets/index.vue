@@ -44,8 +44,7 @@ export default {
       const newBudget = this.$misc.makeData({
         name: this.name
       });
-      console.log(newBudget);
-      this.$store.dispatch('budgets/addBudget',newBudget)
+      this.$store.dispatch('budgets/addBudget',newBudget);
     },
     ploup() {
       console.log(this.budgets);
