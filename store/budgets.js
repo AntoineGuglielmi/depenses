@@ -19,7 +19,14 @@ export const mutations = {
 
 export const actions = {
     async initBudgets({ commit }){
-        const budgets = await this.$axios.$get('http://[::1]:8181/budgets');
+        const budgets = await this.$axios.$get('/api/budgets');
         commit('setBudgets',{budgets});
+    },
+    async addBudget({ commit}, payload)
+    {
+        const data =  new FormData();
+        data.append('foo','bar');
+        console.log(await this.$axios.$post('/api/add-budget',data));
+        // console.log(payload);
     }
 }

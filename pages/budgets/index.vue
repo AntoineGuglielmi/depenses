@@ -1,13 +1,24 @@
 <template>
   <div>
-    <!-- Ajouter un budget -->
+
+    <!-- Tous les budgets -->
+    <Molecules-Section>
+      <template v-slot:header>
+        <h2>Tous tes budgets</h2>
+      </template>
+      <template v-slot:body>
+        {{ budgets }}
+      </template>
+    </Molecules-Section>
+
+    <!-- Formulaire ajouter un budget -->
     <Molecules-Section>
       <template v-slot:header>
         <h2>Ajouter un budget</h2>
       </template>
       <template v-slot:body>
         <form
-          @submit="addBudget"
+          @submit.prevent="addBudget"
         >
           <label for="name">
             Nom
@@ -30,10 +41,11 @@ export default {
   },
   methods: {
     addBudget() {
-      const budget = {
+      const newBudget = this.$misc.makeData({
         name: this.name
-      };
-      this.$store.dispatch('budgets/addBudget',{budget})
+      });
+      console.log(newBudget);
+      this.$store.dispatch('budgets/addBudget',newBudget)
     },
     ploup() {
       console.log(this.budgets);
@@ -41,7 +53,7 @@ export default {
   },
   computed: {
     budgets() {
-      return this.$store.getters['budgets/getBudgets'];
+      return this.$store.getters['budgets/getBudgets'].data;
     }
   }
 }
