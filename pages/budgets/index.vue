@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="page__main" id="budgets">
 
     <!-- Tous les budgets -->
     <Molecules-Section>
@@ -86,13 +86,16 @@ export default {
   },
   methods: {
     addBudget() {
+      if(this.name === null) {
+        return;
+      }
       const newBudget = {
         name: this.name,
         saving: this.saving,
         limit: this.limit
       };
       this.$store.dispatch('budgets/addBudget',newBudget);
-      this.name = '';
+      this.name = null;
       this.saving = false;
       this.limit = 0;
     }
